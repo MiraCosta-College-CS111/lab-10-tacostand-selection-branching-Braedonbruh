@@ -1,7 +1,7 @@
-// PARTNER NAME:
+// PARTNER NAME:Braedon
 // PARTNER NAME:
 // CS111 SECTION #:
-// DATE:
+// DATE: 7/14/25
 
 public class Main
 {
@@ -78,7 +78,17 @@ public class Main
 	 */
 	public static void printConfirmation(int numTacos) //TODO: upgrade per documentation
 	{
-		System.out.println("Here you go, buen provecho!");
-		System.out.println("🌮");
+		if(1<=numTacos && numTacos <=5){
+		
+			System.out.println("Here you go, buen provecho!");
+			for(int i =0; i<numTacos; i++)
+			{
+
+				System.out.print("🌮");
+			}
+			System.out.println();
+			System.out.println();
+		}
+
 	}
 }

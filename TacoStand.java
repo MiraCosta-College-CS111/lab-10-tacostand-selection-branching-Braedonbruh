@@ -2,6 +2,7 @@ public class TacoStand
 {
     /* CONSTANT VARIABLES */
 	public static final String BAR = "----------------------------------------";
+	public static final String CARNE_ASADA_STEAK = "Carne Asada (Steak)";
 
 	/* STATIC VARIABLES */
 	private static int numAsada = 0, numPollo = 0, numLengua = 0, numUltimate = 0;
@@ -55,7 +56,7 @@ public class TacoStand
 	 * 
 	 * @param funds assumes >0 value added to total funds available for cart
 	 */
-	public static void addTotalFunds(int funds)
+	public static void addTotalFunds(double funds)
 	{
 		TacoStand.totalFunds += funds;
 	}
@@ -71,6 +72,8 @@ public class TacoStand
 	 */
 	public static boolean orderSupplies(double budget)
 	{
+		if(budget <=TacoStand.totalFunds)
+		{
 		//tacos cost 75 cents each in supplies, keeping it simple
 	    int tacosEach = (int)(Math.round(budget / 0.75 / 4));
 
@@ -81,7 +84,12 @@ public class TacoStand
 	    TacoStand.numLengua += tacosEach;
 	    TacoStand.numUltimate += tacosEach;
 
-		return true;  //TODO: this is stubbed, replace this line with your actual code!
+		return true; 
+		}
+		else
+		{
+			return false;
+		} 
 	}
 
 	/**
@@ -93,7 +101,34 @@ public class TacoStand
 	 */
 	public static void updateTotalFunds(int tacoOption, int numTacos)
 	{
-		//TODO: this is stubbed, replace this line with your actual code!
+		
+	    if (tacoOption == 1) { 
+			if (areTacosAvailable(tacoOption, numTacos)){ 
+				numAsada -= numTacos; 
+				addTotalFunds(numTacos * 2.5);
+			}
+		}
+			
+		if (tacoOption == 2) {
+			if (areTacosAvailable(tacoOption, numTacos)){
+				numPollo -= numTacos; 
+				addTotalFunds(numTacos * 1.75); 
+			}
+		}
+		if (tacoOption == 3) {
+			if (areTacosAvailable(tacoOption, numTacos)){
+				numLengua -= numTacos;
+			    addTotalFunds (numTacos * 3);
+			} 
+		}
+		
+		if (tacoOption == 4) { 
+			if (areTacosAvailable(tacoOption, numTacos)){
+				numUltimate -= numTacos; 
+				addTotalFunds (numTacos * 18);
+			}
+		}
+			
 	}
 	
 	
@@ -107,6 +142,26 @@ public class TacoStand
 	 */
 	public static boolean areTacosAvailable(int tacoOption, int numTacos)
 	{
-		return false; //TODO: this is stubbed, replace this line with your actual code!
+		 
+		for( int i=1; i<=4; i ++)
+		{
+			if (tacoOption==i) {
+				if (1 <= numTacos && numTacos <= 5){
+					return true;
+				}
+				else{
+					System.out.println("We don't have that many tacos, sorry! Try again :(");
+					return false;
+				}
+			}
+				
+		}
+		
+		return false;
+		
+		
 	}
+		
+		 //TODO: this is stubbed, replace this line with your actual code!
 }
+    
